@@ -3,7 +3,7 @@ from banco import criar_banco, inserir_produtor, listar_produtores
 import os
 
 app = Flask(__name__)
-app.secret_key = 'chave-topogeo123'  # chave para controlar login
+app.secret_key = 'chave-topogeo123'  # Protege a sessão de login
 criar_banco()
 
 @app.route('/')

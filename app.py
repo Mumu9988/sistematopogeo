@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
-from banco import inserir_produtor  # importa a função que salva no banco
+from banco import inserir_produtor, criar_banco
 
 app = Flask(__name__)
+criar_banco()  #  cria o banco na inicialização
 
 @app.route('/')
 def home():

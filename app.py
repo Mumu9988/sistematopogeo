@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request
+from banco import inserir_produtor  # importa a função que salva no banco
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return 'Sistema Topogeo rodando!'
+    return "Sistema Topogeo rodando!"
 
-@app.route('/cadastro')
+@app.route('/cadastro', methods=['GET'])
 def cadastro():
     return render_template('cadastro.html')
 
@@ -16,9 +17,11 @@ def cadastrar():
     cpf = request.form['cpf']
     telefone = request.form['telefone']
     propriedade = request.form['propriedade']
+    
+    inserir_produtor(nome, cpf, telefone, propriedade)  # chama a função do banco
     return f"Produtor {nome} cadastrado com sucesso!"
-import os
 
 if __name__ == '__main__':
+    import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)

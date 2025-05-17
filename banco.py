@@ -1,0 +1,18 @@
+import sqlite3
+
+def criar_banco():
+    conexao = sqlite3.connect('dados.db')
+    cursor = conexao.cursor()
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS produtores (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL,
+            cpf TEXT NOT NULL,
+            telefone TEXT,
+            propriedade TEXT NOT NULL
+        )
+    ''')
+
+    conexao.commit()
+    conexao.close()

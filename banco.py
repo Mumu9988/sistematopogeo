@@ -24,3 +24,10 @@ def inserir_produtor(nome, cpf, telefone, propriedade):
     ''', (nome, cpf, telefone, propriedade))
     conexao.commit()
     conexao.close()
+def listar_produtores():
+    conexao = sqlite3.connect('dados.db')
+    cursor = conexao.cursor()
+    cursor.execute("SELECT nome, cpf, telefone, propriedade FROM produtores")
+    resultados = cursor.fetchall()
+    conexao.close()
+    return resultados

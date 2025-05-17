@@ -53,7 +53,11 @@ def listar():
         html += f"<li>{p[0]} – CPF: {p[1]} – Tel: {p[2]} – Propriedade: {p[3]}</li>"
     html += "</ul><br><a href='/logout'>Sair</a>"
     return html
-
+@app.route('/painel')
+def painel():
+    if not session.get('logado'):
+        return redirect('/login')
+    return render_template('painel.html')
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)

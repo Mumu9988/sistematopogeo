@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from banco import inserir_produtor, criar_banco
 
 app = Flask(__name__)
-criar_banco()  #  cria o banco na inicialização
+criar_banco()
 
 @app.route('/')
 def home():
@@ -19,10 +19,11 @@ def cadastrar():
     telefone = request.form['telefone']
     propriedade = request.form['propriedade']
     
-    inserir_produtor(nome, cpf, telefone, propriedade)  # chama a função do banco
+    inserir_produtor(nome, cpf, telefone, propriedade)
     return f"Produtor {nome} cadastrado com sucesso!"
 
+import os
+
 if __name__ == '__main__':
-    import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)

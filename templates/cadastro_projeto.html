@@ -26,3 +26,31 @@
     </form>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Projeto</title>
+</head>
+<body>
+    <h1>Cadastro de Projeto</h1>
+    <form method="POST" action="/cadastrar_projeto">
+        <label>Nome do Projeto:</label><br>
+        <input type="text" name="nome_projeto" required><br><br>
+
+        <label>Valor (R$):</label><br>
+        <input type="number" name="valor" required><br><br>
+
+        <label>Objetivo:</label><br>
+        <input type="text" name="objetivo" required><br><br>
+
+        <label>Linha de Crédito:</label><br>
+        <input type="text" name="linha_credito" required><br><br>
+
+        <label>Nome do Produtor:</label><br>
+        <input type="text" name="produtor" required><br><br>
+
+        <button type="submit">Cadastrar e Gerar PDF</button>
+    </form>
+</body>
+</html>

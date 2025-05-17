@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -6,5 +6,14 @@ app = Flask(__name__)
 def home():
     return 'Sistema Topogeo rodando!'
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+@app.route('/cadastro')
+def cadastro():
+    return render_template('cadastro.html')
+
+@app.route('/cadastrar', methods=['POST'])
+def cadastrar():
+    nome = request.form['nome']
+    cpf = request.form['cpf']
+    telefone = request.form['telefone']
+    propriedade = request.form['propriedade']
+    return f"Produtor {nome} cadastrado com sucesso!"

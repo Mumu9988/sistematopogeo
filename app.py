@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from banco import inserir_produtor, criar_banco, listar_produtores
 from banco import inserir_produtor, criar_banco
 
 app = Flask(__name__)

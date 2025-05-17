@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Projeto</title>
+</head>
+<body>
+    <h1>Cadastro de Projeto</h1>
+    <form method="POST" action="/salvar-projeto">
+        <label for="nome">Nome do Projeto:</label><br>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="valor">Valor do Projeto (R$):</label><br>
+        <input type="number" id="valor" name="valor" step="0.01" required><br><br>
+
+        <label for="objetivo">Objetivo:</label><br>
+        <textarea id="objetivo" name="objetivo" rows="4" cols="40" required></textarea><br><br>
+
+        <label for="linha">Linha de Crédito:</label><br>
+        <input type="text" id="linha" name="linha" required><br><br>
+
+        <label for="produtor">Produtor Responsável:</label><br>
+        <input type="text" id="produtor" name="produtor" required><br><br>
+
+        <button type="submit">Salvar Projeto</button>
+    </form>
+</body>
+</html>

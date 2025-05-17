@@ -16,7 +16,7 @@ def login():
     if request.method == 'POST':
         if request.form['usuario'] == 'admin' and request.form['senha'] == '1234':
             session['logado'] = True
-            return redirect('/cadastro')
+            return redirect('/painel')
         else:
             erro = 'Usuário ou senha incorretos'
     return render_template('login.html', erro=erro)

@@ -4,10 +4,8 @@ def criar_banco():
     conn = sqlite3.connect('topogeo.db')
     cursor = conn.cursor()
 
-    # Tabela dos produtores
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS produtores (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT,
             cpf TEXT,
             telefone TEXT,
@@ -15,7 +13,6 @@ def criar_banco():
         )
     ''')
 
-    # Tabela dos projetos
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS projetos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -47,3 +44,21 @@ def listar_produtores():
     resultados = cursor.fetchall()
     conn.close()
     return resultados
+
+def inserir_projeto(nome_projeto, valor, objetivo, linha_credito, produtor):
+    conn = sqlite3.connect('topogeo.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO projetos (nome_projeto, valor, objetivo, linha_credito, produtor)
+        VALUES (?, ?, ?, ?, ?)
+    ''', (nome_projeto, valor, objetivo, linha_credito, produtor))
+    conn.commit()
+    conn.close()
+
+def listar_projetos():
+    conn = sqlite3.connect('topogeo.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM projetos')
+    projetos = cursor.fetchall()
+    conn.close()
+    return projetos

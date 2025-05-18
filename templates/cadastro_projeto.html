@@ -54,3 +54,8 @@
     </form>
 </body>
 </html>
+@app.route('/projeto', methods=['GET'])
+def formulario_projeto():
+    if not session.get('logado'):
+        return redirect('/login')
+    return render_template('cadastro_projeto.html')

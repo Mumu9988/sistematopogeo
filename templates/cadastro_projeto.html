@@ -6,56 +6,25 @@
 </head>
 <body>
     <h1>Cadastro de Projeto</h1>
-    <form method="POST" action="/salvar-projeto">
-        <label for="nome">Nome do Projeto:</label><br>
-        <input type="text" id="nome" name="nome" required><br><br>
+    <form action="/cadastrar_projeto" method="post">
+        <label for="nome_projeto">Nome do Projeto:</label><br>
+        <input type="text" id="nome_projeto" name="nome_projeto" required><br><br>
 
-        <label for="valor">Valor do Projeto (R$):</label><br>
-        <input type="number" id="valor" name="valor" step="0.01" required><br><br>
+        <label for="valor">Valor (R$):</label><br>
+        <input type="number" step="0.01" id="valor" name="valor" required><br><br>
 
         <label for="objetivo">Objetivo:</label><br>
-        <textarea id="objetivo" name="objetivo" rows="4" cols="40" required></textarea><br><br>
+        <textarea id="objetivo" name="objetivo" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="linha">Linha de Crédito:</label><br>
-        <input type="text" id="linha" name="linha" required><br><br>
+        <label for="linha_credito">Linha de Crédito:</label><br>
+        <input type="text" id="linha_credito" name="linha_credito" required><br><br>
 
-        <label for="produtor">Produtor Responsável:</label><br>
+        <label for="produtor">Produtor:</label><br>
         <input type="text" id="produtor" name="produtor" required><br><br>
 
-        <button type="submit">Salvar Projeto</button>
+        <input type="submit" value="Gerar PDF do Projeto">
     </form>
+    <br>
+    <a href="/painel">Voltar ao Painel</a>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro de Projeto</title>
-</head>
-<body>
-    <h1>Cadastro de Projeto</h1>
-    <form method="POST" action="/cadastrar_projeto">
-        <label>Nome do Projeto:</label><br>
-        <input type="text" name="nome_projeto" required><br><br>
-
-        <label>Valor (R$):</label><br>
-        <input type="number" name="valor" required><br><br>
-
-        <label>Objetivo:</label><br>
-        <input type="text" name="objetivo" required><br><br>
-
-        <label>Linha de Crédito:</label><br>
-        <input type="text" name="linha_credito" required><br><br>
-
-        <label>Nome do Produtor:</label><br>
-        <input type="text" name="produtor" required><br><br>
-
-        <button type="submit">Cadastrar e Gerar PDF</button>
-    </form>
-</body>
-</html>
-@app.route('/projeto', methods=['GET'])
-def formulario_projeto():
-    if not session.get('logado'):
-        return redirect('/login')
-    return render_template('cadastro_projeto.html')

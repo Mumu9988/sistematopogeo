@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Topogeo</title>
+</head>
+<body style="font-family: sans-serif; padding: 20px;">
+  <h2>Chat Técnico Topogeo</h2>
+  <input id="mensagem" type="text" style="width: 70%;" placeholder="Digite sua dúvida aqui...">
+  <button onclick="enviar()">Enviar</button>
+
+  <div id="resposta" style="margin-top: 20px; font-weight: bold;"></div>
+
+  <script>
+    async function enviar() {
+      const input = document.getElementById("mensagem").value;
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ mensagem: input })
+      });
+      const data = await res.json();
+      document.getElementById("resposta").innerText = data.resposta;
+    }
+  </script>
+</body>
+</html>
